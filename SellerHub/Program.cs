@@ -30,7 +30,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddControllers();
 
-// ✅ Swagger əlavə et
+// ✅ Swagger əlavə edildi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
