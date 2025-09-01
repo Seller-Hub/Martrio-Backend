@@ -54,7 +54,7 @@ Response (User already exists):
 {
   "message": "User already exists"
 }
-
+```
 2. Login 🔑
 POST /auth/login
 
@@ -87,7 +87,7 @@ Response (Invalid credentials):
 {
   "message": "Invalid credentials"
 }
-
+```
 3. Logout 🚪
 POST /auth/logout
 
@@ -101,7 +101,7 @@ Response:
 {
   "message": "Logged out successfully"
 }
-
+```
 4. Me 👤
 GET /auth/me
 
@@ -119,7 +119,7 @@ Response:
   "referralCode": "REF123",
   "linkedTo": 1
 }
-
+```
 Key Notes ⚡
 
 Authentication: Cookie-based. Frontend requests (via fetch or axios) automatically include the cookie.
