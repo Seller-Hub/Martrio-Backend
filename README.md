@@ -16,11 +16,7 @@ It covers **login, registration, logout, and user information** endpoints.
 
 ---
 
-## Endpoints
-
----
-
-### 1. Register 📝
+### <span style="color: #1E90FF;">Register 📝</span>
 
 **POST** `/auth/register`  
 
@@ -57,7 +53,7 @@ Response (User already exists):
   "message": "User already exists"
 }
 
-2. Login 🔑
+<span style="color: #32CD32;">Login 🔑</span>
 POST /auth/login
 
 Description: Logs in an existing user.
@@ -90,7 +86,7 @@ Response (Invalid credentials):
   "message": "Invalid credentials"
 }
 
-3. Logout 🚪
+<span style="color: #FF8C00;">Logout 🚪</span>
 POST /auth/logout
 
 Description: Logs out the currently authenticated user.
@@ -104,12 +100,13 @@ Response:
   "message": "Logged out successfully"
 }
 
-4. Me 👤
+<span style="color: #FF1493;">Me 👤</span>
 GET /auth/me
 
 Description: Retrieves information about the currently authenticated user via cookie.
 
 Response:
+
 
 {
   "message": "User info retrieved successfully",
