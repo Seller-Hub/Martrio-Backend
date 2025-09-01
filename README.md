@@ -3,7 +3,7 @@
 This document describes the **Authentication (Auth)** module of the **SellerHub** project.  
 It covers **login, registration, logout, and user information** endpoints.
 
----
+---------------------------------------------------------------------------------------
 
 ## Overview ℹ️
 
@@ -14,8 +14,8 @@ It covers **login, registration, logout, and user information** endpoints.
 - **Response Format:** JSON  
 - **Security:** Passwords are hashed using `BCrypt`; never stored or returned in plain text (except for testing)
 
----
-```
+---------------------------------------------------------------------------------------
+
 ## Endpoints
 
 ### 1. Register 📝
@@ -26,7 +26,7 @@ It covers **login, registration, logout, and user information** endpoints.
 
 **Request Body (JSON):**
 ```
-```
+
 {
   "name": "John Doe",
   "email": "example@gmail.com",
@@ -55,7 +55,7 @@ Response (User already exists):
 {
   "message": "User already exists"
 }
-```
+---------------------------------------------------------------------------------------
 2. Login 🔑
 POST /auth/login
 
@@ -88,8 +88,8 @@ Response (Invalid credentials):
 {
   "message": "Invalid credentials"
 }
-```
-```
+
+---------------------------------------------------------------------------------------
 3. Logout 🚪
 POST /auth/logout
 
@@ -99,12 +99,12 @@ Request: Requires authentication via cookie.
 
 Response:
 
-
 {
   "message": "Logged out successfully"
 }
-```
-```
+
+---------------------------------------------------------------------------------------
+
 4. Me 👤
 GET /auth/me
 
@@ -122,8 +122,9 @@ Response:
   "referralCode": "REF123",
   "linkedTo": 1
 }
-```
-```
+
+---------------------------------------------------------------------------------------
+
 Key Notes ⚡
 
 Authentication: Cookie-based. Frontend requests (via fetch or axios) automatically include the cookie.
