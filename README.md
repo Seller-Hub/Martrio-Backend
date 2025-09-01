@@ -15,7 +15,7 @@ It covers **login, registration, logout, and user information** endpoints.
 - **Security:** Passwords are hashed using `BCrypt`; never stored or returned in plain text (except for testing)
 
 ---
-
+```
 ## Endpoints
 
 ### 1. Register 📝
@@ -25,6 +25,7 @@ It covers **login, registration, logout, and user information** endpoints.
 **Description:** Registers a new user.
 
 **Request Body (JSON):**
+```
 ```
 {
   "name": "John Doe",
@@ -88,6 +89,7 @@ Response (Invalid credentials):
   "message": "Invalid credentials"
 }
 ```
+```
 3. Logout 🚪
 POST /auth/logout
 
@@ -101,6 +103,7 @@ Response:
 {
   "message": "Logged out successfully"
 }
+```
 ```
 4. Me 👤
 GET /auth/me
@@ -119,6 +122,7 @@ Response:
   "referralCode": "REF123",
   "linkedTo": 1
 }
+```
 ```
 Key Notes ⚡
 
