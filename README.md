@@ -36,9 +36,10 @@ It covers **login, registration, logout, and user information** endpoints.
   "referralCode": "REF123",
   "linkedTo": 1
 }
-
 Response (Success):
 
+json
+Kodu kopyala
 {
   "message": "Registered successfully",
   "userId": 1,
@@ -48,13 +49,13 @@ Response (Success):
   "referralCode": "REF123",
   "linkedTo": 1
 }
-
 Response (User already exists):
 
+json
+Kodu kopyala
 {
   "message": "User already exists"
 }
-
 🟩 Login
 POST /auth/login
 
@@ -62,13 +63,16 @@ Description: Logs in an existing user.
 
 Request Body:
 
+json
+Kodu kopyala
 {
   "email": "example@gmail.com",
   "password": "Password123#"
 }
-
 Response (Success):
 
+json
+Kodu kopyala
 {
   "message": "Logged in successfully",
   "userId": 1,
@@ -78,13 +82,13 @@ Response (Success):
   "referralCode": "REF123",
   "linkedTo": 1
 }
-
 Response (Invalid credentials):
 
+json
+Kodu kopyala
 {
   "message": "Invalid credentials"
 }
-
 🟧 Logout
 POST /auth/logout
 
@@ -94,10 +98,11 @@ Request: Requires authentication via cookie.
 
 Response:
 
+json
+Kodu kopyala
 {
   "message": "Logged out successfully"
 }
-
 🟪 Me
 GET /auth/me
 
@@ -105,6 +110,8 @@ Description: Retrieves information about the currently authenticated user via co
 
 Response:
 
+json
+Kodu kopyala
 {
   "message": "User info retrieved successfully",
   "userId": 1,
@@ -114,9 +121,7 @@ Response:
   "referralCode": "REF123",
   "linkedTo": 1
 }
-
 Key Notes ⚡
-
 Authentication: Cookie-based. Frontend requests (via fetch or axios) automatically include the cookie.
 
 JSON Format: All responses are JSON for easy frontend integration.
