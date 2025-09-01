@@ -16,7 +16,7 @@ It covers **login, registration, logout, and user information** endpoints.
 
 ---
 
-### <span style="color: #1E90FF;">Register 📝</span>
+### 🟦 Register
 
 **POST** `/auth/register`  
 
@@ -35,7 +35,6 @@ It covers **login, registration, logout, and user information** endpoints.
 
 Response (Success):
 
-
 {
   "message": "Registered successfully",
   "userId": 1,
@@ -48,18 +47,16 @@ Response (Success):
 
 Response (User already exists):
 
-
 {
   "message": "User already exists"
 }
 
-<span style="color: #32CD32;">Login 🔑</span>
+🟩 Login
 POST /auth/login
 
 Description: Logs in an existing user.
 
 Request Body:
-
 
 {
   "email": "example@gmail.com",
@@ -67,7 +64,6 @@ Request Body:
 }
 
 Response (Success):
-
 
 {
   "message": "Logged in successfully",
@@ -81,12 +77,11 @@ Response (Success):
 
 Response (Invalid credentials):
 
-
 {
   "message": "Invalid credentials"
 }
 
-<span style="color: #FF8C00;">Logout 🚪</span>
+🟧 Logout
 POST /auth/logout
 
 Description: Logs out the currently authenticated user.
@@ -100,7 +95,7 @@ Response:
   "message": "Logged out successfully"
 }
 
-<span style="color: #FF1493;">Me 👤</span>
+🟪 Me
 GET /auth/me
 
 Description: Retrieves information about the currently authenticated user via cookie.
