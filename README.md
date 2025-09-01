@@ -16,6 +16,10 @@ It covers **login, registration, logout, and user information** endpoints.
 
 ---
 
+## Endpoints
+
+---
+
 ### 🟦 Register
 
 **POST** `/auth/register`  
@@ -90,7 +94,6 @@ Request: Requires authentication via cookie.
 
 Response:
 
-
 {
   "message": "Logged out successfully"
 }
@@ -101,7 +104,6 @@ GET /auth/me
 Description: Retrieves information about the currently authenticated user via cookie.
 
 Response:
-
 
 {
   "message": "User info retrieved successfully",
