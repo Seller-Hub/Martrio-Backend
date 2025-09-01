@@ -24,7 +24,7 @@ It covers **login, registration, logout, and user information** endpoints.
 **Description:** Registers a new user.
 
 **Request Body:**
-
+```
 {
   "name": "John Doe",
   "email": "example@gmail.com",
