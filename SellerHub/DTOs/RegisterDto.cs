@@ -1,11 +1,50 @@
 ﻿namespace SellerHub.DTOs
 {
-    public record RegisterDto(
-         string Name,
-         string Email,
-         string Password,
-         string Role = "customer",
-         string? ReferralCode = null,
-         int? LinkedTo = null
-     );
+    // Customer Register (single step)
+    public record RegisterCustomerDto(
+        string FirstName,
+        string LastName,
+        string Email,
+        string Region,
+        string Password,
+        string ConfirmPassword,
+        bool TermsAccepted
+    );
+
+    // Seller Register Step 1 (basic info)
+    public record RegisterSellerStep1Dto(
+        string Email,
+        string Region,
+        string Password,
+        string ConfirmPassword
+    );
+
+    // Seller Register Step 2 (business info)
+    public record RegisterSellerStep2Dto(
+        string CompanyName,
+        string ProductCategory,
+        string WebsiteUrl,
+        string TaxId,
+        bool TermsAccepted
+    );
+
+    // Admin Register Step 1
+    public record RegisterAdminStep1Dto(
+        string FirstName,
+        string LastName,
+        string Email,
+        string Password,
+        string ConfirmPassword
+    );
+
+    // Admin Register Step 2
+    public record RegisterAdminStep2Dto(
+        string ContentDescription,
+        string Region,
+        string WebsiteUrl,
+        string HowDidYouHearAboutUs,
+        bool TermsAccepted
+    );
+
+    
 }

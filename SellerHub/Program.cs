@@ -6,6 +6,7 @@ using SellerHub.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Db
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
