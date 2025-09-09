@@ -18,8 +18,8 @@ jobs:
         with:
           dotnet-version: 7.0
 
-      - name: Restore Dependencies
-        run: dotnet restore ./SellerHub/SellerHub.csproj
+      # - name: Restore Dependencies
+      #   run: dotnet restore ./SellerHub/SellerHub.csproj
 
       - name: Build Project
         run: dotnet build ./SellerHub/SellerHub.csproj --configuration Release --no-restore
