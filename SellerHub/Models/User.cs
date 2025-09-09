@@ -5,13 +5,15 @@ using Microsoft.AspNetCore.Identity;
 
 namespace SellerHub.Models {
     // Role type: Seller | Admin | Customer
-    public enum UserRole {
+    public enum UserRole
+    {
         Seller = 0,
         Admin = 1,
         Customer = 2
     }
 
-    public class User {
+    public class User
+    {
         // ----- Static Fields -----
         private static int _counter = 0; // for assigning UserIds
         private static readonly PasswordHasher<User> _passwordHasher = new PasswordHasher<User>();
@@ -22,7 +24,8 @@ namespace SellerHub.Models {
 
         // Display name of the user
         [Required, MaxLength(100)]
-        public string Name { get; private set; } = string.Empty;
+        public string FirstName { get; private set; } = string.Empty;
+        public string LastName { get; private set; } = string.Empty;
 
         // Email used for login
         [Required, MaxLength(100), EmailAddress]
@@ -44,9 +47,11 @@ namespace SellerHub.Models {
         public int? LinkedTo { get; set; }
 
         // ----- Constructor -----
-        protected User(string name, string email, string password, UserRole role) {
+        protected User(string firstName, string lastName, string email, string password, UserRole role)
+        {
             UserId = ++_counter;
-            Name = name;
+            FirstName = firstName;
+            LastName = lastName;
             Role = role;
 
             if (!IsValidEmail(email))
@@ -57,17 +62,20 @@ namespace SellerHub.Models {
         }
 
         // ----- Password Methods -----
-        public void SetPassword(string password) {
+        public void SetPassword(string password)
+        {
             PasswordHash = _passwordHasher.HashPassword(this, password);
         }
 
-        public bool VerifyPassword(string password) {
+        public bool VerifyPassword(string password)
+        {
             var result = _passwordHasher.VerifyHashedPassword(this, PasswordHash, password);
             return result == PasswordVerificationResult.Success;
         }
 
         // ----- Email Validation -----
-        private bool IsValidEmail(string email) {
+        private bool IsValidEmail(string email)
+        {
             try {
                 var addr = new MailAddress(email);
                 return addr.Address == email;
@@ -77,8 +85,10 @@ namespace SellerHub.Models {
         }
 
         // ----- Unique Representation -----
-        public string GetUniqueUserIdRepresentation() {
-            return Role switch {
+        public string GetUniqueUserIdRepresentation()
+        {
+            return Role switch
+            {
                 UserRole.Seller => $"SLL-{UserId:D4}",
                 UserRole.Admin => $"ADM-{UserId:D4}",
                 UserRole.Customer => $"CST-{UserId:D4}",
