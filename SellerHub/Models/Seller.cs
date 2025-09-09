@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace SellerHub.Models
 {
     public class Seller : User
@@ -20,5 +22,5 @@ namespace SellerHub.Models
 
         public Seller(string firstName, string lastName, string email, string password)
             : base(firstName, lastName, email, password, UserRole.Seller) { }
-    }   
+    }
 }

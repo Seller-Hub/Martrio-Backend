@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace SellerHub.Models
 {
     public class Admin : User
@@ -16,5 +18,5 @@ namespace SellerHub.Models
             : base(firstName, lastName, email, password, UserRole.Admin) { }
 
     }
-   
+
 }
