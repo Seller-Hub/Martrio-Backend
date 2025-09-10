@@ -20,16 +20,18 @@ namespace SellerHub.Models {
 
         // ----- Properties -----
         // Unique numeric ID (auto-assigned)
-        protected int UserId { get; }
+        public int UserId { get; private set; }
 
         // Display name of the user
         [Required, MaxLength(100)]
-        public string FirstName { get; private set; } = string.Empty;
-        public string LastName { get; private set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+
+        [Required, MaxLength(100)]
+        public string LastName { get; set; } = string.Empty;
 
         // Email used for login
         [Required, MaxLength(100), EmailAddress]
-        public string Email { get; private set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
 
         // Secure password hash (never store plain text)
         [Required]
@@ -37,26 +39,24 @@ namespace SellerHub.Models {
 
         // User role
         [Required]
-        public UserRole Role { get; private set; } = UserRole.Customer;
+        public UserRole Role { get; set; } = UserRole.Customer;
 
-        // Optional referral code
-        [MaxLength(100)]
-        public string ReferralCode { get; set; } = string.Empty;
-
-        // Linked account ID (nullable)
-        public int? LinkedTo { get; set; }
 
         // ----- Constructor -----
-        protected User(string firstName, string lastName, string email, string password, UserRole role)
-        {
+        public User() {
             UserId = ++_counter;
+        }
+
+        public User(string firstName, string lastName, string email, string password, UserRole role)
+            : this()
+        {
             FirstName = firstName;
             LastName = lastName;
+            Email = email;
             Role = role;
 
             if (!IsValidEmail(email))
                 throw new ArgumentException("Invalid email address.", nameof(email));
-            Email = email;
 
             SetPassword(password);
         }
@@ -72,14 +72,19 @@ namespace SellerHub.Models {
             var result = _passwordHasher.VerifyHashedPassword(this, PasswordHash, password);
             return result == PasswordVerificationResult.Success;
         }
+        
+        public string GetPasswordHash() => PasswordHash;
 
         // ----- Email Validation -----
         private bool IsValidEmail(string email)
         {
-            try {
+            try
+            {
                 var addr = new MailAddress(email);
                 return addr.Address == email;
-            } catch {
+            }
+            catch
+            {
                 return false;
             }
         }
