@@ -37,11 +37,12 @@ public class AuthController : ControllerBase
         {
             message = "Registered successfully",
             userId = user.UserId,
-            name = user.Name,
+            fistName = user.FirstName,
+            lastName = user.LastName,
             email = user.Email,
             role = user.Role,
-            referralCode = user.ReferralCode,
-            linkedTo = user.LinkedTo
+            // referralCode = user.ReferralCode,
+            // linkedTo = user.LinkedTo
         });
     }
 
@@ -73,11 +74,12 @@ public class AuthController : ControllerBase
         {
             message = "Logged in successfully",
             userId = user.UserId,
-            name = user.Name,
+            firstName = user.FirstName,
+            lastName = user.LastName,
             email = user.Email,
             role = user.Role,
-            referralCode = user.ReferralCode,
-            linkedTo = user.LinkedTo
+            // referralCode = user.ReferralCode,
+            // linkedTo = user.LinkedTo
         });
     }
 
