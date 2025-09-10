@@ -5,6 +5,6 @@
          string LastName,
          string Email,
          string Password,
-         string Role = UserRole.Customer
+         string Role
      );
 }
