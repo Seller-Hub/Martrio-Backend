@@ -20,12 +20,13 @@ namespace SellerHub.Services
             // Create new user
             var user = new User
             {
-                Name = dto.Name,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
                 Email = dto.Email,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
+                PasswordHash = user.SetPassword(dto.Password), // BCrypt.Net.BCrypt.HashPassword(dto.Password),
                 Role = dto.Role,
-                ReferralCode = dto.ReferralCode ?? string.Empty,
-                LinkedTo = dto.LinkedTo
+                // ReferralCode = dto.ReferralCode ?? string.Empty,
+                // LinkedTo = dto.LinkedTo
             };
 
             db.Users.Add(user);
