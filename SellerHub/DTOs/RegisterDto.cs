@@ -1,11 +1,10 @@
 ﻿namespace SellerHub.DTOs
 {
     public record RegisterDto(
-         string Name,
+         string FirstName,
+         string LastName,
          string Email,
          string Password,
-         string Role = "customer",
-         string? ReferralCode = null,
-         int? LinkedTo = null
+         string Role = UserRole.Customer
      );
 }

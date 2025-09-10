@@ -40,7 +40,7 @@ namespace SellerHub.Services
         public async Task<User?> LoginAsync(LoginDto dto)
         {
             var user = await db.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
-            if (user is null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+            if (user is null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.GetPasswordHash()))
                 return null;
 
             return user;
