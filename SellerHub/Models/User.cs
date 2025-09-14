@@ -70,6 +70,7 @@ namespace SellerHub.Models {
         public void SetPassword(string password)
         {
             PasswordHash = _passwordHasher.HashPassword(this, password);
+            // BCrypt.Net.BCrypt.Verify(password)
         }
 
         public bool VerifyPassword(string password)

@@ -20,8 +20,9 @@ namespace SellerHub.Services
                 Email = dto.Email,
                 // Region = dto.Region, // Admin
                 TermsAccepted = dto.TermsAccepted,
-                PasswordHash = dto.Password
             };
+
+            SetPassWord(dto.Password);
 
             if (!user.VerifyPassword(dto.Password))
             {
