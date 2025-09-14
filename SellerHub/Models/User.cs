@@ -35,7 +35,7 @@ namespace SellerHub.Models {
 
         // Secure password hash (never store plain text)
         [Required]
-        private string PasswordHash { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
 
         // User role
         [Required]
