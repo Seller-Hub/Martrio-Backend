@@ -44,79 +44,79 @@ public class AuthController : ControllerBase
     // ===========================
     // REGISTER SELLER STEP1
     // ===========================
-    [HttpPost("register/seller/step1")]
-    public async Task<IActionResult> RegisterSellerStep1(RegisterSellerStep1Dto dto)
-    {
-        var user = await _authService.RegisterSellerStep1Async(dto);
-        if (user is null)
-            return BadRequest(new { message = "User already exists" });
+    // [HttpPost("register/seller/step1")]
+    // public async Task<IActionResult> RegisterSellerStep1(RegisterSellerStep1Dto dto)
+    // {
+    //     var user = await _authService.RegisterSellerStep1Async(dto);
+    //     if (user is null)
+    //         return BadRequest(new { message = "User already exists" });
 
-        return Ok(new
-        {
-            message = "Seller step1 completed, continue with step2",
-            userId = user.UserId,
-            email = user.Email,
-            role = user.Role
-        });
-    }
+    //     return Ok(new
+    //     {
+    //         message = "Seller step1 completed, continue with step2",
+    //         userId = user.UserId,
+    //         email = user.Email,
+    //         role = user.Role
+    //     });
+    // }
 
-    // ===========================
-    // REGISTER SELLER STEP2
-    // ===========================
-    [HttpPost("register/seller/step2/{userId}")]
-    public async Task<IActionResult> RegisterSellerStep2(int userId, RegisterSellerStep2Dto dto)
-    {
-        var user = await _authService.RegisterSellerStep2Async(userId, dto);
-        if (user is null)
-            return BadRequest(new { message = "Invalid seller user" });
+    // // ===========================
+    // // REGISTER SELLER STEP2
+    // // ===========================
+    // [HttpPost("register/seller/step2/{userId}")]
+    // public async Task<IActionResult> RegisterSellerStep2(int userId, RegisterSellerStep2Dto dto)
+    // {
+    //     var user = await _authService.RegisterSellerStep2Async(userId, dto);
+    //     if (user is null)
+    //         return BadRequest(new { message = "Invalid seller user" });
 
-        return Ok(new
-        {
-            message = "Seller registered successfully",
-            userId = user.UserId,
-            companyName = user.CompanyName,
-            productCategory = user.ProductCategory,
-            role = user.Role
-        });
-    }
+    //     return Ok(new
+    //     {
+    //         message = "Seller registered successfully",
+    //         userId = user.UserId,
+    //         companyName = user.CompanyName,
+    //         productCategory = user.ProductCategory,
+    //         role = user.Role
+    //     });
+    // }
 
-    // ===========================
-    // REGISTER ADMIN STEP1
-    // ===========================
-    [HttpPost("register/admin/step1")]
-    public async Task<IActionResult> RegisterAdminStep1(RegisterAdminStep1Dto dto)
-    {
-        var user = await _authService.RegisterAdminStep1Async(dto);
-        if (user is null)
-            return BadRequest(new { message = "User already exists" });
+    // // ===========================
+    // // REGISTER ADMIN STEP1
+    // // ===========================
+    // [HttpPost("register/admin/step1")]
+    // public async Task<IActionResult> RegisterAdminStep1(RegisterAdminStep1Dto dto)
+    // {
+    //     var user = await _authService.RegisterAdminStep1Async(dto);
+    //     if (user is null)
+    //         return BadRequest(new { message = "User already exists" });
 
-        return Ok(new
-        {
-            message = "Admin step1 completed, continue with step2",
-            userId = user.UserId,
-            email = user.Email,
-            role = user.Role
-        });
-    }
+    //     return Ok(new
+    //     {
+    //         message = "Admin step1 completed, continue with step2",
+    //         userId = user.UserId,
+    //         email = user.Email,
+    //         role = user.Role
+    //     });
+    // }
 
-    // ===========================
-    // REGISTER ADMIN STEP2
-    // ===========================
-    [HttpPost("register/admin/step2/{userId}")]
-    public async Task<IActionResult> RegisterAdminStep2(int userId, RegisterAdminStep2Dto dto)
-    {
-        var user = await _authService.RegisterAdminStep2Async(userId, dto);
-        if (user is null)
-            return BadRequest(new { message = "Invalid admin user" });
+    // // ===========================
+    // // REGISTER ADMIN STEP2
+    // // ===========================
+    // [HttpPost("register/admin/step2/{userId}")]
+    // public async Task<IActionResult> RegisterAdminStep2(int userId, RegisterAdminStep2Dto dto)
+    // {
+    //     var user = await _authService.RegisterAdminStep2Async(userId, dto);
+    //     if (user is null)
+    //         return BadRequest(new { message = "Invalid admin user" });
 
-        return Ok(new
-        {
-            message = "Admin registered successfully",
-            userId = user.UserId,
-            email = user.Email,
-            role = user.Role
-        });
-    }
+    //     return Ok(new
+    //     {
+    //         message = "Admin registered successfully",
+    //         userId = user.UserId,
+    //         email = user.Email,
+    //         role = user.Role
+    //     });
+    // }
 
     // ===========================
     // LOGIN
