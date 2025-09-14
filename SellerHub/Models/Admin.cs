@@ -14,8 +14,8 @@ namespace SellerHub.Models
 
         public bool TermsAccepted { get; set; } = false;
 
-        public Admin(string firstName, string lastName, string email, string password)
-            : base(firstName, lastName, email, password, UserRole.Admin) { }
+        public Admin(string firstName, string lastName, string email, string password, bool termsAccepted)
+            : base(firstName, lastName, email, password, UserRole.Admin, termsAccepted) { }
 
     }
 

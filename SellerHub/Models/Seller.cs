@@ -20,7 +20,7 @@ namespace SellerHub.Models
         public string TaxId { get; set; } = string.Empty;
 
 
-        public Seller(string firstName, string lastName, string email, string password)
-            : base(firstName, lastName, email, password, UserRole.Seller) { }
+        public Seller(string firstName, string lastName, string email, string password, bool termsAccepted)
+            : base(firstName, lastName, email, password, UserRole.Seller, termsAccepted) { }
     }
 }
