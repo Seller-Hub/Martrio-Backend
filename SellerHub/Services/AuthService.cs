@@ -20,7 +20,7 @@ namespace SellerHub.Services
                 Email = dto.Email,
                 // Region = dto.Region, // Admin
                 TermsAccepted = dto.TermsAccepted,
-                PasswordHash = SetPassword(BCrypt.Net.BCrypt.HashPassword(dto.Password))
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password)
             };
 
             db.Users.Add(user);
