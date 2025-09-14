@@ -42,7 +42,7 @@ namespace SellerHub.Models {
         public UserRole Role { get; set; } = UserRole.Customer;
 
         // Terms
-        bool TermsAccepted { get; set; } = false; 
+        public bool TermsAccepted { get; set; } = false; 
 
 
         // ----- Constructor -----
