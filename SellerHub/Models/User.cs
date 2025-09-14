@@ -41,19 +41,24 @@ namespace SellerHub.Models {
         [Required]
         public UserRole Role { get; set; } = UserRole.Customer;
 
+        // Terms
+        bool TermsAccepted { get; set; } = false; 
+
 
         // ----- Constructor -----
-        public User() {
+        public User()
+        {
             UserId = ++_counter;
         }
 
-        public User(string firstName, string lastName, string email, string password, UserRole role)
+        public User(string firstName, string lastName, string email, string password, UserRole role, bool termsAccepted)
             : this()
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             Role = role;
+            TermsAccepted = termsAccepted;
 
             if (!IsValidEmail(email))
                 throw new ArgumentException("Invalid email address.", nameof(email));
