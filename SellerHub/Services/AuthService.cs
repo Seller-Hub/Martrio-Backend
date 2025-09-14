@@ -20,8 +20,13 @@ namespace SellerHub.Services
                 Email = dto.Email,
                 // Region = dto.Region, // Admin
                 TermsAccepted = dto.TermsAccepted,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+                PasswordHash = user.SetPassword(dto.Password)
             };
+
+            if (!user.VerifyPassword(dto.Password))
+            {
+                throw new UnauthorizedAccessException("Invalid password");
+            }
 
             db.Users.Add(user);
             await db.SaveChangesAsync();
