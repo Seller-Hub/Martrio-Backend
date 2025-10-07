@@ -123,3 +123,78 @@ Passwords: Passwords are hashed and never returned in production. Plain text pas
 Roles: User roles (customer, admin, seller) can be used to assign different permissions and access levels.
 
 Referral System: ReferralCode and LinkedTo allow tracking of referrals and linked accounts.
+
+
+
+
+🛒 SellerHub – Dashboard & Product Management System
+1️⃣ Seller Dashboard
+
+Home Page Statistics:
+
+Total Sales
+
+Total Orders
+
+Store Sessions
+
+Overall Sales
+
+Regional Sales
+
+Orders Overview:
+
+Completed
+
+Cancelled
+
+Ongoing
+
+Top Selling Products
+
+2️⃣ Product Management
+
+Product Listing for sellers
+
+Search & Filter System:
+
+Search by Name or Product Code
+
+Filter by Category
+
+Stock Status (In stock, Low stock, Out of stock)
+
+Price Range
+
+Stock Status & Visibility display
+
+3️⃣ Product Categories
+
+Create new categories
+
+List existing categories
+
+Many-to-Many Relationship: assign multiple categories to a single product
+
+4️⃣ Bulk Edit
+
+Update multiple products at once:
+
+Stock
+
+Price
+
+Visibility
+
+Categories
+
+5️⃣ Backend & Database
+
+Built with EF Core and Relational Database
+
+Proper navigation properties and composite keys (Product ↔ ProductCategory)
+
+Optimized queries for search, filter, and bulk edit operations
+
+✅ Summary:
+SellerHub provides a complete seller dashboard, flexible product management, category handling, and bulk edit functionalities with robust backend architecture.
