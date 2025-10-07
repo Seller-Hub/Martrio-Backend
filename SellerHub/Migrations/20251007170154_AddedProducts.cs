@@ -5,6 +5,7 @@
 namespace SellerHub.Migrations
 {
     /// <inheritdoc />
+    /// 
     public partial class AddedProducts : Migration
     {
         /// <inheritdoc />
