@@ -111,7 +111,7 @@ Response:
   "referralCode": "REF123",
   "linkedTo": 1
 }
-
+```
 Key Notes ⚡
 
 Authentication: Cookie-based. Frontend requests (via fetch or axios) automatically include the cookie.
@@ -125,83 +125,131 @@ Roles: User roles (customer, admin, seller) can be used to assign different perm
 Referral System: ReferralCode and LinkedTo allow tracking of referrals and linked accounts.
 
 
+------------------------------------------------------------------------------------------------------------------------------------
+
+# 🛒 SellerHub – Dashboard & Product Management System
+
+This document describes the SellerHub Product & Dashboard module.
+It covers seller dashboard, product management, categories, bulk edit, and backend structure.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+ℹ️ Overview
+
+- **Backend**: ASP.NET Core Web API
+
+- **Database**: EF Core with relational database
+
+- **Dashboard**: Seller statistics, order overview, top-selling products
+
+- **Product Management**: Listing, search, filtering, stock & visibility
+
+- **Category Management**: Many-to-Many relation, multiple categories per product
 
 
-🛒 SellerHub – Dashboard & Product Management System
+-----------------------------------------------------------------------------------------------------------------------------------
 
-1️⃣ Seller Dashboard 📊
+## Bulk Edit: Update multiple products at once (stock, price, visibility, categories)
 
-Home Page Statistics
+# 1️⃣ Seller Dashboard 📊
 
-Total Sales
+- **Description: Displays key seller statistics and insights.**
 
-Total Orders
+- **Statistics Included:**
 
-Store Sessions
+- **Total Sales 💰**
 
-Overall Sales
+- **Total Orders 🛒**
 
-Regional Sales
+- **Store Sessions 👥**
 
-Orders Overview
+- **Overall Sales 📈**
 
-Completed ✅
+- **Regional Sales 🌍**
 
-Cancelled ❌
+# Orders Overview:
 
-Ongoing ⏳
+- **Completed ✅**
 
-Top Selling Products
+- **Cancelled ❌**
 
-Display top-performing products based on sales ⭐
+- **Ongoing ⏳**
 
-2️⃣ Product Management 🛍️
-Product Listing
+# Top Selling Products:
 
-View all products belonging to the seller
+- **Displays top 5 products based on sales ⭐**
 
-Search & Filter System
 
-Search by Name or Product Code 🔍
+-------------------------------------------------------------------------------------------------------
 
-Filter by Category 🏷️
 
-Stock Status (In stock, Low stock, Out of stock)
+## 2️⃣ Product Management 🛍️
 
-Price Range 💵
+- **Description: Manage seller products with search, filter, and visibility features.**
 
-Stock Status & Visibility
+- **Product Listing:**
 
-Clearly shows current stock levels and product visibility 👁️
+- **View all products belonging to the seller 📋**
 
-3️⃣ Product Categories 🏷️
+- **Search & Filter System:**
 
-Create new categories ➕
+- **Search by Name or Product Code 🔍**
 
-List existing categories 📂
+- **Filter by Category 🏷️**
 
-Assign multiple categories to a single product 🔗
+- **Stock Status (In stock, Low stock, Out of stock) 📦**
 
-4️⃣ Bulk Edit ✏️
+- **Price Range 💵**
 
-Update multiple products at once:
+- **Stock Status & Visibility:**
 
-Stock
+- **Displays current stock levels and product visibility 👁️**
 
-Price
+-----------------------------------------------------------------------------------------------------
 
-Visibility
+## 3️⃣ Product Categories 🏷️
 
-Categories
+- **Description: Manage product categories and assign them to products.**
 
-5️⃣ Backend & Database 🗄️
+- **Create new categories ➕**
 
-Built with EF Core and Relational Database ⚙️
+- **List existing categories 📂**
 
-Navigation properties and composite keys (Product ↔ ProductCategory)
+- **Assign multiple categories to a single product 🔗**
 
-Optimized queries for search, filter, and bulk edit 🚀
 
-✅ Summary
+--------------------------------------------------------------------------------------------------------
 
-SellerHub provides a complete seller dashboard, flexible product management, category handling, and bulk edit functionalities with robust backend architecture.
+## 4️⃣ Bulk Edit ✏️
+
+- **Description: Update multiple products at once to save time.**
+
+- **Stock 📦**
+
+- **Price 💵**
+
+- **Visibility 👁️**
+
+- **Categories 🏷️**
+
+--------------------------------------------------------------------------------------------------------
+
+## 5️⃣ Backend & Database 🗄️
+
+- **Description: Underlying architecture for optimized product and dashboard operations.**
+
+- **Built with EF Core and Relational Database ⚙**️
+
+- **Navigation properties and composite keys (Product ↔ ProductCategory) 🔗**
+
+- **Optimized queries for search, filter, and bulk edit operations 🚀**
+
+--------------------------------------------------------------------------------------------------------
+
+# ✅ Summary
+
+- **SellerHub provides a complete seller dashboard, flexible product management, category handling, and bulk edit functionalities with robust backend architecture.**
+
+
+
+
