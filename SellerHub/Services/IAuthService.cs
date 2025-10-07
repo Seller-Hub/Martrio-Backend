@@ -18,5 +18,6 @@ namespace SellerHub.Services
 
         // LOGIN
         Task<User?> LoginAsync(LoginDto dto);
+        Task<SellerDashboardDto> GetSellerDashboardAsync(int sellerId);
     }
 }

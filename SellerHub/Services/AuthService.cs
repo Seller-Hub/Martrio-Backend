@@ -103,5 +103,36 @@ namespace SellerHub.Services
 
             return user;
         }
+
+
+        public async Task<SellerDashboardDto> GetSellerDashboardAsync(int sellerId)
+        {
+            var orders = await db.Orders.Where(o => o.SellerId == sellerId).ToListAsync();
+            var products = await db.Products.Where(p => p.SellerId == sellerId).ToListAsync();
+
+            var totalSales = orders.Where(o => o.Status == "completed").Sum(o => o.TotalAmount);
+            var totalOrders = orders.Count;
+            var storeSessions = await db.Users.CountAsync(u => u.LinkedTo == sellerId); // misal
+            var overallSales = orders.Sum(o => o.TotalAmount);
+            var regionalSales = orders.Where(o => o.Region == "your-region").Sum(o => o.TotalAmount);
+
+            var ordersOverview = new OrdersOverviewDto(
+                Completed: orders.Count(o => o.Status == "completed"),
+                Cancelled: orders.Count(o => o.Status == "cancelled"),
+                Ongoing: orders.Count(o => o.Status == "ongoing")
+            );
+
+            var topSellingProducts = products
+                .OrderByDescending(p => p.TotalSold)
+                .Take(5)
+                .Select(p => new TopSellingProductDto(p.Name, p.TotalSold))
+                .ToList();
+
+            return new SellerDashboardDto(totalSales, totalOrders, storeSessions, overallSales, regionalSales, ordersOverview, topSellingProducts);
+        }
+
+
+
+
     }
 }
