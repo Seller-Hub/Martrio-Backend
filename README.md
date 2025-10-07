@@ -128,9 +128,10 @@ Referral System: ReferralCode and LinkedTo allow tracking of referrals and linke
 
 
 🛒 SellerHub – Dashboard & Product Management System
-1️⃣ Seller Dashboard
 
-Home Page Statistics:
+1️⃣ Seller Dashboard 📊
+
+Home Page Statistics
 
 Total Sales
 
@@ -142,41 +143,46 @@ Overall Sales
 
 Regional Sales
 
-Orders Overview:
+Orders Overview
 
-Completed
+Completed ✅
 
-Cancelled
+Cancelled ❌
 
-Ongoing
+Ongoing ⏳
 
 Top Selling Products
 
-2️⃣ Product Management
+Display top-performing products based on sales ⭐
 
-Product Listing for sellers
+2️⃣ Product Management 🛍️
+Product Listing
 
-Search & Filter System:
+View all products belonging to the seller
 
-Search by Name or Product Code
+Search & Filter System
 
-Filter by Category
+Search by Name or Product Code 🔍
+
+Filter by Category 🏷️
 
 Stock Status (In stock, Low stock, Out of stock)
 
-Price Range
+Price Range 💵
 
-Stock Status & Visibility display
+Stock Status & Visibility
 
-3️⃣ Product Categories
+Clearly shows current stock levels and product visibility 👁️
 
-Create new categories
+3️⃣ Product Categories 🏷️
 
-List existing categories
+Create new categories ➕
 
-Many-to-Many Relationship: assign multiple categories to a single product
+List existing categories 📂
 
-4️⃣ Bulk Edit
+Assign multiple categories to a single product 🔗
+
+4️⃣ Bulk Edit ✏️
 
 Update multiple products at once:
 
@@ -188,13 +194,14 @@ Visibility
 
 Categories
 
-5️⃣ Backend & Database
+5️⃣ Backend & Database 🗄️
 
-Built with EF Core and Relational Database
+Built with EF Core and Relational Database ⚙️
 
-Proper navigation properties and composite keys (Product ↔ ProductCategory)
+Navigation properties and composite keys (Product ↔ ProductCategory)
 
-Optimized queries for search, filter, and bulk edit operations
+Optimized queries for search, filter, and bulk edit 🚀
 
-✅ Summary:
+✅ Summary
+
 SellerHub provides a complete seller dashboard, flexible product management, category handling, and bulk edit functionalities with robust backend architecture.
