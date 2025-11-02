@@ -46,5 +46,15 @@
         bool TermsAccepted
     );
 
-    
+
+    public record UpdateProfileDto(
+    string? FirstName,
+    string? LastName,
+    string? MobileNumber, 
+    string? Region,
+    string? CompanyName, 
+    string? WebsiteUrl,  
+    string? ContentDescription
+);
+
 }

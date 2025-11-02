@@ -19,5 +19,9 @@ namespace SellerHub.Services
         // LOGIN
         Task<User?> LoginAsync(LoginDto dto);
         Task<SellerDashboardDto> GetSellerDashboardAsync(int sellerId);
+
+        // UPDATE
+
+        Task<User?> UpdateProfileAsync(int userId, UpdateProfileDto dto);
     }
 }

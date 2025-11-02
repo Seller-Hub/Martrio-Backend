@@ -181,8 +181,39 @@ public class AuthController : ControllerBase
     }
 
 
-   
+    // ===========================
+    // UPDATE PROFİLE
+    // ===========================
+    [Authorize]
+    [HttpPut("profile")]
+    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto dto)
+    {
+       
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (!int.TryParse(userIdString, out var userId))
+            return Unauthorized(new { message = "Invalid user identifier." });
 
+    
+        var updatedUser = await _authService.UpdateProfileAsync(userId, dto);
+
+        if (updatedUser is null)
+            return NotFound(new { message = "User not found." });
+
+      
+        return Ok(new
+        {
+            message = "Profile updated successfully",
+            userId = updatedUser.UserId,
+            firstName = updatedUser.FirstName,
+            lastName = updatedUser.LastName,
+            email = updatedUser.Email, 
+            mobileNumber = updatedUser.MobileNumber,
+            region = updatedUser.Region,
+            companyName = updatedUser.CompanyName, 
+            websiteUrl = updatedUser.WebsiteUrl,   
+            role = updatedUser.Role
+        });
+    }
 
 
 }

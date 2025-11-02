@@ -45,6 +45,8 @@ namespace SellerHub.Models
         [MaxLength(200)]
         public string HowDidYouHearAboutUs { get; set; } = string.Empty;
 
+        [MaxLength(20)]
+        public string MobileNumber { get; set; } = string.Empty;
         public bool TermsAccepted { get; set; } = false;
 
         // Optional referral / linked accounts

@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using SellerHub.DTOs;
 using SellerHub.Services;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SellerHub.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "seller")]    
     public class ProductsController : ControllerBase
     {
         private readonly ProductService _productService;
@@ -16,7 +18,24 @@ namespace SellerHub.Controllers
             _productService = productService;
         }
 
-        // GET /api/products?search=lego
+
+        // POST /api/products
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto dto)
+        {
+            
+            if (string.IsNullOrWhiteSpace(dto.Name) || dto.Price <= 0)
+                return BadRequest(new { message = "Product Name and Price are required and valid." });
+
+            var sellerId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+  
+            var product = await _productService.CreateProductAsync(dto, sellerId);
+
+            return CreatedAtAction(nameof(SearchProducts), new { search = product.Name }, product);
+        }
+
+        // GET /api/products/search?search=lego
         [HttpGet("search")]
         public async Task<IActionResult> SearchProducts([FromQuery] string search)
         {
@@ -46,8 +65,5 @@ namespace SellerHub.Controllers
             var updatedProducts = await _productService.BulkEditProductsAsync(dto, sellerId);
             return Ok(updatedProducts);
         }
-
-
-
     }
 }

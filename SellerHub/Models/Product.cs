@@ -17,7 +17,28 @@ namespace SellerHub.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
-        public int Stock { get; set; } = 0;  // Stock
+        [MaxLength(500)]
+        public string? Description { get; set; }
+
+        [MaxLength(50)]
+        public string? Size { get; set; } // S, M, L, XL, etc..
+
+        [MaxLength(20)]
+        public string? Gender { get; set; } // Male, Female
+
+        [MaxLength(100)]
+        public string? Colors { get; set; } 
+
+
+        [Required]
+        public int Stock { get; set; } // Stock Amount
+
+        // 👉 YENİ EKLENEN: İndirim Bilgileri
+        [MaxLength(50)]
+        public string? DiscountType { get; set; } // fixed, percentage
+
+        public decimal? DiscountAmount { get; set; }
+
 
         public int TotalSold { get; set; } = 0;  // Total Quantity
 
@@ -29,6 +50,8 @@ namespace SellerHub.Models
 
 
         public int? ProductCategoryId { get; set; }
+
+        public DateTime? PublishDate { get; set; } // datetime?
         public ProductCategory? ProductCategory { get; set; }
 
         // Navigation property

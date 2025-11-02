@@ -41,45 +41,94 @@ namespace SellerHub.Services
         string? stockStatus = null,
         decimal? minPrice = null,
         decimal? maxPrice = null)
-            {
-                var query = _db.Products.AsQueryable().Where(p => p.SellerId == sellerId);
+        {
+            var query = _db.Products.AsQueryable().Where(p => p.SellerId == sellerId);
 
             if (!string.IsNullOrWhiteSpace(category))
                 query = query.Where(p => p.ProductCategory != null && p.ProductCategory.Name == category);
 
 
             if (!string.IsNullOrWhiteSpace(stockStatus))
+            {
+                query = stockStatus.ToLower() switch
                 {
-                    query = stockStatus.ToLower() switch
-                    {
-                        "in stock" => query.Where(p => p.Stock > 10),
-                        "low stock" => query.Where(p => p.Stock > 0 && p.Stock <= 10),
-                        "out of stock" => query.Where(p => p.Stock <= 0),
-                        _ => query
-                    };
-                }
-
-                if (minPrice.HasValue)
-                    query = query.Where(p => p.Price >= minPrice.Value);
-                if (maxPrice.HasValue)
-                    query = query.Where(p => p.Price <= maxPrice.Value);
-
-                var products = await query.OrderByDescending(p => p.ProductId).ToListAsync();
-
-                return products.Select(p => new DashboardProductDto(
-                    p.ProductId,
-                    p.ProductCode,
-                    p.Name,
-                    p.Price,
-                    p.Stock,
-                    p.TotalSold,
-                    p.Stock <= 0 ? "Out of stock" : p.Stock <= 10 ? "Low stock" : "In stock",
-                    p.Visibility
-                )).ToList();
+                    "in stock" => query.Where(p => p.Stock > 10),
+                    "low stock" => query.Where(p => p.Stock > 0 && p.Stock <= 10),
+                    "out of stock" => query.Where(p => p.Stock <= 0),
+                    _ => query
+                };
             }
 
+            if (minPrice.HasValue)
+                query = query.Where(p => p.Price >= minPrice.Value);
+            if (maxPrice.HasValue)
+                query = query.Where(p => p.Price <= maxPrice.Value);
 
+            var products = await query.OrderByDescending(p => p.ProductId).ToListAsync();
 
+            return products.Select(p => new DashboardProductDto(
+                p.ProductId,
+                p.ProductCode,
+                p.Name,
+                p.Price,
+                p.Stock,
+                p.TotalSold,
+                p.Stock <= 0 ? "Out of stock" : p.Stock <= 10 ? "Low stock" : "In stock",
+                p.Visibility
+            )).ToList();
+        }
+
+     
+        public async Task<DashboardProductDto> CreateProductAsync(CreateProductDto dto, int sellerId)
+        {
+            var product = new Product
+            {
+                SellerId = sellerId,
+                Name = dto.Name,
+
+                Description = dto.Description,
+                Size = dto.Size,
+                Gender = dto.Gender,
+                Colors = dto.Colors,
+                DiscountType = dto.DiscountType,
+                DiscountAmount = dto.DiscountAmount,
+          
+                Price = dto.Price,
+                Stock = dto.Stock,
+                ProductCode = dto.ProductCode,
+                Visibility = dto.Visibility,
+                PublishDate = dto.PublishDate
+            };
+
+            // (Many-to-Many)
+            if (dto.CategoryIds != null && dto.CategoryIds.Any())
+            {
+                foreach (var catId in dto.CategoryIds)
+                {
+                    product.ProductProductCategories.Add(new ProductProductCategory
+                    {
+                        ProductCategoryId = catId
+                    });
+                }
+            }
+
+           
+
+            _db.Products.Add(product);
+            await _db.SaveChangesAsync();
+
+          
+            return new DashboardProductDto(
+                product.ProductId,
+                product.ProductCode,
+                product.Name,
+                product.Price,
+                product.Stock,
+                product.TotalSold,
+                product.StockStatus,
+                product.Visibility
+            );
+        }
 
         public async Task<ProductCategoryDto?> CreateCategoryAsync(string name)
         {
@@ -100,7 +149,6 @@ namespace SellerHub.Services
                 .Select(c => new ProductCategoryDto(c.Id, c.Name))
                 .ToListAsync();
         }
-
 
 
         public async Task<List<DashboardProductDto>> BulkEditProductsAsync(BulkEditProductDto dto, int sellerId)
@@ -158,9 +206,5 @@ namespace SellerHub.Services
                 p.Visibility
             )).ToList();
         }
-
-
-
-
     }
 }

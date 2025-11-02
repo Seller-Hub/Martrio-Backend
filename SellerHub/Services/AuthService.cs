@@ -131,8 +131,48 @@ namespace SellerHub.Services
             return new SellerDashboardDto(totalSales, totalOrders, storeSessions, overallSales, regionalSales, ordersOverview, topSellingProducts);
         }
 
+        public async Task<User?> UpdateProfileAsync(int userId, UpdateProfileDto dto)
+        {
+            var user = await db.Users.FindAsync(userId);
+            if (user == null) return null;
 
+   
+            if (!string.IsNullOrEmpty(dto.FirstName))
+                user.FirstName = dto.FirstName;
+            if (!string.IsNullOrEmpty(dto.LastName))
+                user.LastName = dto.LastName;
+            if (!string.IsNullOrEmpty(dto.MobileNumber))
+                user.MobileNumber = dto.MobileNumber;
+            if (!string.IsNullOrEmpty(dto.Region))
+                user.Region = dto.Region;
 
+        
+            if (user.Role == "seller")
+            {
+                if (!string.IsNullOrEmpty(dto.CompanyName))
+                    user.CompanyName = dto.CompanyName;
+                if (!string.IsNullOrEmpty(dto.WebsiteUrl))
+                    user.WebsiteUrl = dto.WebsiteUrl;
+               
+            }
+            else if (user.Role == "admin")
+            {
+                if (!string.IsNullOrEmpty(dto.WebsiteUrl))
+                    user.WebsiteUrl = dto.WebsiteUrl;
+                if (!string.IsNullOrEmpty(dto.ContentDescription))
+                    user.ContentDescription = dto.ContentDescription;
+               
+            }
 
+          
+
+            await db.SaveChangesAsync();
+            return user;
+        }
+
+       
     }
+
+
 }
+
